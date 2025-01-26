@@ -18,13 +18,49 @@ for i in range(0,9):
 
 # Four of a Kind
 for i in range(0,13):
+    level = []
     for j in range(0,52):
-        level = []
-        if ((j != 12 - i) and (j != 25-i) and (j != 38-i) and (j != 51 - i)):
-            level.append([[deck[12-i], deck[25-i], deck[38-i], deck[51-i], deck[j]]])
+        if ((j != 12-i) and (j != 25-i) and (j != 38-i) and (j != 51-i)):
+            level.append([deck[12-i], deck[25-i], deck[38-i], deck[51-i], deck[j]])
     card_rankings.append(level)
 
 # Full House
+
+for i in range(0,13):
+    for j in range(0,13):
+        if (i != j):
+            level = []
+            level.append([deck[12-i], deck[25-i], deck[38-i], deck[12-j], deck[25-j]]) # no 51
+            level.append([deck[12-i], deck[38-i], deck[51-i], deck[12-j], deck[25-j]]) # no 25
+            level.append([deck[12-i], deck[25-i], deck[51-i], deck[12-j], deck[25-j]]) # no 38
+            level.append([deck[51-i], deck[25-i], deck[38-i], deck[12-j], deck[25-j]]) # no 12
+
+            level.append([deck[12-i], deck[25-i], deck[38-i], deck[12-j], deck[38-j]]) # no 51
+            level.append([deck[12-i], deck[38-i], deck[51-i], deck[12-j], deck[38-j]]) # no 25
+            level.append([deck[12-i], deck[25-i], deck[51-i], deck[12-j], deck[38-j]]) # no 38
+            level.append([deck[51-i], deck[25-i], deck[38-i], deck[12-j], deck[38-j]]) # no 12
+
+            level.append([deck[12-i], deck[25-i], deck[38-i], deck[12-j], deck[51-j]]) # no 51
+            level.append([deck[12-i], deck[38-i], deck[51-i], deck[12-j], deck[51-j]]) # no 25
+            level.append([deck[12-i], deck[25-i], deck[51-i], deck[12-j], deck[51-j]]) # no 38
+            level.append([deck[51-i], deck[25-i], deck[38-i], deck[12-j], deck[51-j]]) # no 12
+
+            level.append([deck[12-i], deck[25-i], deck[38-i], deck[25-j], deck[38-j]]) # no 51
+            level.append([deck[12-i], deck[38-i], deck[51-i], deck[25-j], deck[38-j]]) # no 25
+            level.append([deck[12-i], deck[25-i], deck[51-i], deck[25-j], deck[38-j]]) # no 38
+            level.append([deck[51-i], deck[25-i], deck[38-i], deck[25-j], deck[38-j]]) # no 12
+
+            level.append([deck[12-i], deck[25-i], deck[38-i], deck[25-j], deck[51-j]]) # no 51
+            level.append([deck[12-i], deck[38-i], deck[51-i], deck[25-j], deck[51-j]]) # no 25
+            level.append([deck[12-i], deck[25-i], deck[51-i], deck[25-j], deck[51-j]]) # no 38
+            level.append([deck[51-i], deck[25-i], deck[38-i], deck[25-j], deck[51-j]]) # no 12
+
+            level.append([deck[12-i], deck[25-i], deck[38-i], deck[38-j], deck[51-j]]) # no 51
+            level.append([deck[12-i], deck[38-i], deck[51-i], deck[38-j], deck[51-j]]) # no 25
+            level.append([deck[12-i], deck[25-i], deck[51-i], deck[38-j], deck[51-j]]) # no 38
+            level.append([deck[51-i], deck[25-i], deck[38-i], deck[38-j], deck[51-j]]) # no 12
+
+            card_rankings.append(level)
 
 # Flush
 
@@ -38,6 +74,9 @@ for i in range(0,13):
 
 # High Card
 
+
+
+# Cycle through all possible dealings
 
 
 for x in card_rankings:
