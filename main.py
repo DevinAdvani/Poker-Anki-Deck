@@ -1,22 +1,45 @@
+# Make a deck
+
 deck = []
-suits = ["Clubs", "Hearts", "Diamonds", "Spades"]
-values = ["2", "3", "4", "5", "6", "7", "8", "9", "10", "Jack", "Queen", "King", "Ace"]
-hands = []
-games = []
+suits = ["C", "H", "D", "S"]
+values = ["2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K", "A"]
 
 for i in range(0,4):
     for j in range(0,13):
-        deck.append(values[j] + " of " + suits[i])
-    
-for a in range(0,52):
-    for b in range(a+1,52):
-        for c in range(b+1,52):
-            for d in range(c+1,52):
-                for e in range(d+1,52):
-                    for f in range(e+1,52):
-                        for g in range(f+1,52):
-                            for h in range(g+1,52):
-                                for i in range(h+1,52):
-                                    game = [deck[a], deck[b], deck[c], deck[d], deck[e], deck[f], deck[g], deck[h], deck[i]]
-                                    print(a,b,c,d,e,f,g,h,i)
-                                    games.append(game)
+        deck.append([values[j], suits[i]])
+
+# Make card rankings
+
+card_rankings = []
+
+# Straight Flushes
+for i in range(0,9):
+    card_rankings.append([deck[8-i:13-i], deck[21-i:26-i], deck[34-i:39-i], deck[47-i:52-i]])
+
+# Four of a Kind
+for i in range(0,13):
+    for j in range(0,52):
+        level = []
+        if ((j != 12 - i) and (j != 25-i) and (j != 38-i) and (j != 51 - i)):
+            level.append([[deck[12-i], deck[25-i], deck[38-i], deck[51-i], deck[j]]])
+    card_rankings.append(level)
+
+# Full House
+
+# Flush
+
+# Straight
+
+# Three of a Kind
+
+# Two Pair
+
+# Pair
+
+# High Card
+
+
+
+for x in card_rankings:
+    print(x)
+    print(" ")
