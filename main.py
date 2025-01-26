@@ -1,3 +1,5 @@
+from itertools import combinations
+
 # Make a deck
 
 deck = []
@@ -30,36 +32,12 @@ for i in range(0,13):
     for j in range(0,13):
         if (i != j):
             level = []
-            level.append([deck[12-i], deck[25-i], deck[38-i], deck[12-j], deck[25-j]]) # no 51
-            level.append([deck[12-i], deck[38-i], deck[51-i], deck[12-j], deck[25-j]]) # no 25
-            level.append([deck[12-i], deck[25-i], deck[51-i], deck[12-j], deck[25-j]]) # no 38
-            level.append([deck[51-i], deck[25-i], deck[38-i], deck[12-j], deck[25-j]]) # no 12
-
-            level.append([deck[12-i], deck[25-i], deck[38-i], deck[12-j], deck[38-j]]) # no 51
-            level.append([deck[12-i], deck[38-i], deck[51-i], deck[12-j], deck[38-j]]) # no 25
-            level.append([deck[12-i], deck[25-i], deck[51-i], deck[12-j], deck[38-j]]) # no 38
-            level.append([deck[51-i], deck[25-i], deck[38-i], deck[12-j], deck[38-j]]) # no 12
-
-            level.append([deck[12-i], deck[25-i], deck[38-i], deck[12-j], deck[51-j]]) # no 51
-            level.append([deck[12-i], deck[38-i], deck[51-i], deck[12-j], deck[51-j]]) # no 25
-            level.append([deck[12-i], deck[25-i], deck[51-i], deck[12-j], deck[51-j]]) # no 38
-            level.append([deck[51-i], deck[25-i], deck[38-i], deck[12-j], deck[51-j]]) # no 12
-
-            level.append([deck[12-i], deck[25-i], deck[38-i], deck[25-j], deck[38-j]]) # no 51
-            level.append([deck[12-i], deck[38-i], deck[51-i], deck[25-j], deck[38-j]]) # no 25
-            level.append([deck[12-i], deck[25-i], deck[51-i], deck[25-j], deck[38-j]]) # no 38
-            level.append([deck[51-i], deck[25-i], deck[38-i], deck[25-j], deck[38-j]]) # no 12
-
-            level.append([deck[12-i], deck[25-i], deck[38-i], deck[25-j], deck[51-j]]) # no 51
-            level.append([deck[12-i], deck[38-i], deck[51-i], deck[25-j], deck[51-j]]) # no 25
-            level.append([deck[12-i], deck[25-i], deck[51-i], deck[25-j], deck[51-j]]) # no 38
-            level.append([deck[51-i], deck[25-i], deck[38-i], deck[25-j], deck[51-j]]) # no 12
-
-            level.append([deck[12-i], deck[25-i], deck[38-i], deck[38-j], deck[51-j]]) # no 51
-            level.append([deck[12-i], deck[38-i], deck[51-i], deck[38-j], deck[51-j]]) # no 25
-            level.append([deck[12-i], deck[25-i], deck[51-i], deck[38-j], deck[51-j]]) # no 38
-            level.append([deck[51-i], deck[25-i], deck[38-i], deck[38-j], deck[51-j]]) # no 12
-
+            positions = [12, 25, 38, 51]
+            threes = list(combinations(positions, 3))
+            twos = list(combinations(positions, 2))
+            for k in range(0,4):
+                for l in range(0,6):
+                    level.append([deck[threes[k][0]-i], deck[threes[k][1]-i], deck[threes[k][2]-i], deck[twos[l][0]-j], deck[twos[l][1]-j]])
             card_rankings.append(level)
 
 # Flush
@@ -73,8 +51,6 @@ for i in range(0,13):
 # Pair
 
 # High Card
-
-
 
 # Cycle through all possible dealings
 
